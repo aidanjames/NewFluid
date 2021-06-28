@@ -17,6 +17,12 @@
 		3D08BA3F268666F100A18DC5 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D08BA2B268666EF00A18DC5 /* Persistence.swift */; };
 		3D08BA40268666F100A18DC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D08BA2C268666F100A18DC5 /* Assets.xcassets */; };
 		3D08BA41268666F100A18DC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D08BA2C268666F100A18DC5 /* Assets.xcassets */; };
+		3DF4E3EB268A5C34009FF3AC /* TempPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF4E3EA268A5C34009FF3AC /* TempPersistenceManager.swift */; };
+		3DF4E3EC268A5C34009FF3AC /* TempPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF4E3EA268A5C34009FF3AC /* TempPersistenceManager.swift */; };
+		3DF4E3EF268A5C4B009FF3AC /* TempActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF4E3EE268A5C4B009FF3AC /* TempActivityModel.swift */; };
+		3DF4E3F0268A5C4B009FF3AC /* TempActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF4E3EE268A5C4B009FF3AC /* TempActivityModel.swift */; };
+		3DF4E3F3268A5E16009FF3AC /* FileManager+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF4E3F2268A5E16009FF3AC /* FileManager+Ext.swift */; };
+		3DF4E3F4268A5E16009FF3AC /* FileManager+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF4E3F2268A5E16009FF3AC /* FileManager+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +33,9 @@
 		3D08BA2C268666F100A18DC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D08BA31268666F100A18DC5 /* NewFluid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewFluid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D08BA37268666F100A18DC5 /* NewFluid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewFluid.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DF4E3EA268A5C34009FF3AC /* TempPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempPersistenceManager.swift; sourceTree = "<group>"; };
+		3DF4E3EE268A5C4B009FF3AC /* TempActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempActivityModel.swift; sourceTree = "<group>"; };
+		3DF4E3F2268A5E16009FF3AC /* FileManager+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +69,9 @@
 			children = (
 				3D08BA29268666EF00A18DC5 /* NewFluidApp.swift */,
 				3D08BA2A268666EF00A18DC5 /* ContentView.swift */,
-				3D08BA2B268666EF00A18DC5 /* Persistence.swift */,
+				3DF4E3F1268A5E01009FF3AC /* Extensions */,
+				3DF4E3ED268A5C39009FF3AC /* TempModel */,
+				3DF4E3E9268A5C14009FF3AC /* Persistence */,
 				3D08BA2C268666F100A18DC5 /* Assets.xcassets */,
 				3D08BA27268666EF00A18DC5 /* NewFluid.xcdatamodeld */,
 			);
@@ -74,6 +85,31 @@
 				3D08BA37268666F100A18DC5 /* NewFluid.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		3DF4E3E9268A5C14009FF3AC /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				3D08BA2B268666EF00A18DC5 /* Persistence.swift */,
+				3DF4E3EA268A5C34009FF3AC /* TempPersistenceManager.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		3DF4E3ED268A5C39009FF3AC /* TempModel */ = {
+			isa = PBXGroup;
+			children = (
+				3DF4E3EE268A5C4B009FF3AC /* TempActivityModel.swift */,
+			);
+			path = TempModel;
+			sourceTree = "<group>";
+		};
+		3DF4E3F1268A5E01009FF3AC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3DF4E3F2268A5E16009FF3AC /* FileManager+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,8 +210,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DF4E3F3268A5E16009FF3AC /* FileManager+Ext.swift in Sources */,
+				3DF4E3EF268A5C4B009FF3AC /* TempActivityModel.swift in Sources */,
 				3D08BA38268666F100A18DC5 /* NewFluid.xcdatamodeld in Sources */,
 				3D08BA3E268666F100A18DC5 /* Persistence.swift in Sources */,
+				3DF4E3EB268A5C34009FF3AC /* TempPersistenceManager.swift in Sources */,
 				3D08BA3A268666F100A18DC5 /* NewFluidApp.swift in Sources */,
 				3D08BA3C268666F100A18DC5 /* ContentView.swift in Sources */,
 			);
@@ -185,8 +224,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DF4E3F4268A5E16009FF3AC /* FileManager+Ext.swift in Sources */,
+				3DF4E3F0268A5C4B009FF3AC /* TempActivityModel.swift in Sources */,
 				3D08BA39268666F100A18DC5 /* NewFluid.xcdatamodeld in Sources */,
 				3D08BA3F268666F100A18DC5 /* Persistence.swift in Sources */,
+				3DF4E3EC268A5C34009FF3AC /* TempPersistenceManager.swift in Sources */,
 				3D08BA3B268666F100A18DC5 /* NewFluidApp.swift in Sources */,
 				3D08BA3D268666F100A18DC5 /* ContentView.swift in Sources */,
 			);
