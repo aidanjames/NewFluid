@@ -30,8 +30,15 @@ class TempPersistenceManager: ObservableObject {
         }
     }
     
+    func saveCategories() {
+        FileManager.default.writeData(activities, to: "categories")
+    }
+    
     func saveCategory(_ category: Category) {
-        // TODO
+        if let index = self.categories.firstIndex(where: { $0.id == category.id }) {
+            categories[index] = category
+            saveCategories()
+        }
     }
     
     func deleteCategory(_ category: Category) {
@@ -51,12 +58,15 @@ class TempPersistenceManager: ObservableObject {
         }
     }
     
-    func saveActivities(_ activities: [Activity]) {
-        FileManager.default.writeData(activities, to: "activities")
+    func saveActivities() {
+        FileManager.default.writeData(self.activities, to: "activities")
     }
     
     func saveActivity(_ activity: Activity) {
-        // TODO
+        if let index = self.activities.firstIndex(where: { $0.id == activity.id }) {
+            activities[index] = activity
+            saveActivities()
+        }
     }
     
     func deleteActivity(_ activity: Activity) {
