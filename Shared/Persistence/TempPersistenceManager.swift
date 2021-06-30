@@ -42,11 +42,17 @@ class TempPersistenceManager: ObservableObject {
     }
     
     func deleteCategory(_ category: Category) {
-        // TODO
+        if let index = self.categories.firstIndex(where: { $0.id == category.id }) {
+            categories.remove(at: index)
+            saveCategories()
+        }
     }
     
     func editCategory(_ category: Category) {
-        // TODO
+        if let index = self.activities.firstIndex(where: { $0.id == category.id }) {
+            categories[index] = category
+            saveCategories()
+        }
     }
     
     
@@ -70,7 +76,10 @@ class TempPersistenceManager: ObservableObject {
     }
     
     func deleteActivity(_ activity: Activity) {
-        // TODO
+        if let index = self.categories.firstIndex(where: { $0.id == activity.id }) {
+            activities.remove(at: index)
+            saveActivities()
+        }
     }
     
     
