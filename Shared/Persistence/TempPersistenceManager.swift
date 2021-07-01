@@ -91,16 +91,22 @@ class TempPersistenceManager: ObservableObject {
         }
     }
     
-    func saveLogRecords(_ logRecords: [LogRecord]) {
-        FileManager.default.writeData(logRecords, to: "LogRecords")
+    func saveLogRecords() {
+        FileManager.default.writeData(self.logRecords, to: "LogRecords")
     }
     
     func saveLogRecord(_ logRecord: LogRecord) {
-        // TODO
+        if let index = self.activities.firstIndex(where: { $0.id == logRecord.id }) {
+            logRecords[index] = logRecord
+            saveLogRecords()
+        }
     }
     
     func deleteLogRecord(_ logRecord: LogRecord) {
-        // TODO
+        if let index = self.activities.firstIndex(where: { $0.id == logRecord.id }) {
+            logRecords.remove(at: index)
+            saveLogRecords()
+        }
     }
 
 }
