@@ -17,6 +17,8 @@
 		3D08BA3F268666F100A18DC5 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D08BA2B268666EF00A18DC5 /* Persistence.swift */; };
 		3D08BA40268666F100A18DC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D08BA2C268666F100A18DC5 /* Assets.xcassets */; };
 		3D08BA41268666F100A18DC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D08BA2C268666F100A18DC5 /* Assets.xcassets */; };
+		3DE7E314268EF88600AD8D54 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE7E313268EF88600AD8D54 /* CoreDataManager.swift */; };
+		3DE7E315268EF88600AD8D54 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE7E313268EF88600AD8D54 /* CoreDataManager.swift */; };
 		3DF4E3EB268A5C34009FF3AC /* TempPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF4E3EA268A5C34009FF3AC /* TempPersistenceManager.swift */; };
 		3DF4E3EC268A5C34009FF3AC /* TempPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF4E3EA268A5C34009FF3AC /* TempPersistenceManager.swift */; };
 		3DF4E3EF268A5C4B009FF3AC /* TempActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF4E3EE268A5C4B009FF3AC /* TempActivityModel.swift */; };
@@ -33,6 +35,7 @@
 		3D08BA2C268666F100A18DC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D08BA31268666F100A18DC5 /* NewFluid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewFluid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D08BA37268666F100A18DC5 /* NewFluid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewFluid.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DE7E313268EF88600AD8D54 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		3DF4E3EA268A5C34009FF3AC /* TempPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempPersistenceManager.swift; sourceTree = "<group>"; };
 		3DF4E3EE268A5C4B009FF3AC /* TempActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempActivityModel.swift; sourceTree = "<group>"; };
 		3DF4E3F2268A5E16009FF3AC /* FileManager+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Ext.swift"; sourceTree = "<group>"; };
@@ -92,6 +95,7 @@
 			children = (
 				3D08BA2B268666EF00A18DC5 /* Persistence.swift */,
 				3DF4E3EA268A5C34009FF3AC /* TempPersistenceManager.swift */,
+				3DE7E313268EF88600AD8D54 /* CoreDataManager.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -216,6 +220,7 @@
 				3D08BA3E268666F100A18DC5 /* Persistence.swift in Sources */,
 				3DF4E3EB268A5C34009FF3AC /* TempPersistenceManager.swift in Sources */,
 				3D08BA3A268666F100A18DC5 /* NewFluidApp.swift in Sources */,
+				3DE7E314268EF88600AD8D54 /* CoreDataManager.swift in Sources */,
 				3D08BA3C268666F100A18DC5 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,6 +235,7 @@
 				3D08BA3F268666F100A18DC5 /* Persistence.swift in Sources */,
 				3DF4E3EC268A5C34009FF3AC /* TempPersistenceManager.swift in Sources */,
 				3D08BA3B268666F100A18DC5 /* NewFluidApp.swift in Sources */,
+				3DE7E315268EF88600AD8D54 /* CoreDataManager.swift in Sources */,
 				3D08BA3D268666F100A18DC5 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

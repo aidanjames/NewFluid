@@ -19,7 +19,7 @@ struct Activity: Identifiable, Codable {
     var logRecords: [LogRecord]
 }
 
-struct LogRecord: Identifiable, Codable {
+struct LogRecord2: Identifiable, Codable {
     var id: UUID = UUID()
     var startTime: Date
     var endTime: Date?
