@@ -16,7 +16,7 @@ struct Activity: Identifiable, Codable {
     var id: UUID = UUID()
     var title: String
     var category: Category?
-    var logRecords: [LogRecord]
+    var logRecords: [LogRecord2]
 }
 
 struct LogRecord2: Identifiable, Codable {

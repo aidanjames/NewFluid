@@ -11,12 +11,10 @@
 		3D08BA39268666F100A18DC5 /* NewFluid.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D08BA27268666EF00A18DC5 /* NewFluid.xcdatamodeld */; };
 		3D08BA3A268666F100A18DC5 /* NewFluidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D08BA29268666EF00A18DC5 /* NewFluidApp.swift */; };
 		3D08BA3B268666F100A18DC5 /* NewFluidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D08BA29268666EF00A18DC5 /* NewFluidApp.swift */; };
-		3D08BA3C268666F100A18DC5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D08BA2A268666EF00A18DC5 /* ContentView.swift */; };
-		3D08BA3D268666F100A18DC5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D08BA2A268666EF00A18DC5 /* ContentView.swift */; };
-		3D08BA3E268666F100A18DC5 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D08BA2B268666EF00A18DC5 /* Persistence.swift */; };
-		3D08BA3F268666F100A18DC5 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D08BA2B268666EF00A18DC5 /* Persistence.swift */; };
 		3D08BA40268666F100A18DC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D08BA2C268666F100A18DC5 /* Assets.xcassets */; };
 		3D08BA41268666F100A18DC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D08BA2C268666F100A18DC5 /* Assets.xcassets */; };
+		3D66FC08268F0AD4004BFBD8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D66FC07268F0AD4004BFBD8 /* ContentView.swift */; };
+		3D66FC09268F0AD4004BFBD8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D66FC07268F0AD4004BFBD8 /* ContentView.swift */; };
 		3DE7E314268EF88600AD8D54 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE7E313268EF88600AD8D54 /* CoreDataManager.swift */; };
 		3DE7E315268EF88600AD8D54 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE7E313268EF88600AD8D54 /* CoreDataManager.swift */; };
 		3DF4E3EB268A5C34009FF3AC /* TempPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF4E3EA268A5C34009FF3AC /* TempPersistenceManager.swift */; };
@@ -30,11 +28,10 @@
 /* Begin PBXFileReference section */
 		3D08BA28268666EF00A18DC5 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		3D08BA29268666EF00A18DC5 /* NewFluidApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFluidApp.swift; sourceTree = "<group>"; };
-		3D08BA2A268666EF00A18DC5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		3D08BA2B268666EF00A18DC5 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		3D08BA2C268666F100A18DC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D08BA31268666F100A18DC5 /* NewFluid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewFluid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D08BA37268666F100A18DC5 /* NewFluid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewFluid.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D66FC07268F0AD4004BFBD8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3DE7E313268EF88600AD8D54 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		3DF4E3EA268A5C34009FF3AC /* TempPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempPersistenceManager.swift; sourceTree = "<group>"; };
 		3DF4E3EE268A5C4B009FF3AC /* TempActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempActivityModel.swift; sourceTree = "<group>"; };
@@ -71,12 +68,12 @@
 			isa = PBXGroup;
 			children = (
 				3D08BA29268666EF00A18DC5 /* NewFluidApp.swift */,
-				3D08BA2A268666EF00A18DC5 /* ContentView.swift */,
 				3DF4E3F1268A5E01009FF3AC /* Extensions */,
 				3DF4E3ED268A5C39009FF3AC /* TempModel */,
 				3DF4E3E9268A5C14009FF3AC /* Persistence */,
 				3D08BA2C268666F100A18DC5 /* Assets.xcassets */,
 				3D08BA27268666EF00A18DC5 /* NewFluid.xcdatamodeld */,
+				3D66FC07268F0AD4004BFBD8 /* ContentView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -93,7 +90,6 @@
 		3DF4E3E9268A5C14009FF3AC /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				3D08BA2B268666EF00A18DC5 /* Persistence.swift */,
 				3DF4E3EA268A5C34009FF3AC /* TempPersistenceManager.swift */,
 				3DE7E313268EF88600AD8D54 /* CoreDataManager.swift */,
 			);
@@ -216,12 +212,11 @@
 			files = (
 				3DF4E3F3268A5E16009FF3AC /* FileManager+Ext.swift in Sources */,
 				3DF4E3EF268A5C4B009FF3AC /* TempActivityModel.swift in Sources */,
+				3D66FC08268F0AD4004BFBD8 /* ContentView.swift in Sources */,
 				3D08BA38268666F100A18DC5 /* NewFluid.xcdatamodeld in Sources */,
-				3D08BA3E268666F100A18DC5 /* Persistence.swift in Sources */,
 				3DF4E3EB268A5C34009FF3AC /* TempPersistenceManager.swift in Sources */,
 				3D08BA3A268666F100A18DC5 /* NewFluidApp.swift in Sources */,
 				3DE7E314268EF88600AD8D54 /* CoreDataManager.swift in Sources */,
-				3D08BA3C268666F100A18DC5 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,12 +226,11 @@
 			files = (
 				3DF4E3F4268A5E16009FF3AC /* FileManager+Ext.swift in Sources */,
 				3DF4E3F0268A5C4B009FF3AC /* TempActivityModel.swift in Sources */,
+				3D66FC09268F0AD4004BFBD8 /* ContentView.swift in Sources */,
 				3D08BA39268666F100A18DC5 /* NewFluid.xcdatamodeld in Sources */,
-				3D08BA3F268666F100A18DC5 /* Persistence.swift in Sources */,
 				3DF4E3EC268A5C34009FF3AC /* TempPersistenceManager.swift in Sources */,
 				3D08BA3B268666F100A18DC5 /* NewFluidApp.swift in Sources */,
 				3DE7E315268EF88600AD8D54 /* CoreDataManager.swift in Sources */,
-				3D08BA3D268666F100A18DC5 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

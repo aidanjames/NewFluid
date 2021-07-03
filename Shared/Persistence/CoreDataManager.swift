@@ -13,7 +13,7 @@ class CoreDataManager {
     let persistentContainer: NSPersistentContainer
     
     init() {
-        persistentContainer = NSPersistentContainer(name: "NewFluid")
+        persistentContainer = NSPersistentCloudKitContainer(name: "NewFluid")
         persistentContainer.loadPersistentStores { (description, error) in
             if let error = error {
                 fatalError("Core Data Store failed to initialise \(error.localizedDescription)")
@@ -24,9 +24,9 @@ class CoreDataManager {
     
     func saveMovie(title: String) {
         
-        let movie = LogRecord(context: persistentContainer.viewContext)
-        LogRecord.title = title
-        LogRecord.startTime = Date()
+        let logRecord = LogRecord(context: persistentContainer.viewContext)
+        logRecord.activityName = title
+        logRecord.startTime = Date()
 
         do {
             try persistentContainer.viewContext.save()

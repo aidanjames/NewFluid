@@ -12,7 +12,7 @@ class TempPersistenceManager: ObservableObject {
     
     @Published var categories: [Category] = []
     @Published var activities: [Activity] = []
-    @Published var logRecords: [LogRecord] = []
+    @Published var logRecords: [LogRecord2] = []
     
     
     private init() {
@@ -86,7 +86,7 @@ class TempPersistenceManager: ObservableObject {
     // Log records
     
     func fetchLogRecords() {
-        if let logRecords: [LogRecord] = FileManager.default.fetchData(from: "logRecords") {
+        if let logRecords: [LogRecord2] = FileManager.default.fetchData(from: "logRecords") {
             self.logRecords = logRecords
         }
     }
@@ -95,14 +95,14 @@ class TempPersistenceManager: ObservableObject {
         FileManager.default.writeData(self.logRecords, to: "LogRecords")
     }
     
-    func saveLogRecord(_ logRecord: LogRecord) {
+    func saveLogRecord(_ logRecord: LogRecord2) {
         if let index = self.activities.firstIndex(where: { $0.id == logRecord.id }) {
             logRecords[index] = logRecord
             saveLogRecords()
         }
     }
     
-    func deleteLogRecord(_ logRecord: LogRecord) {
+    func deleteLogRecord(_ logRecord: LogRecord2) {
         if let index = self.activities.firstIndex(where: { $0.id == logRecord.id }) {
             logRecords.remove(at: index)
             saveLogRecords()
