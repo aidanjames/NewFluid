@@ -8,38 +8,59 @@
 import SwiftUI
 
 struct ContentView: View {
-    let context = CoreDataManager().persistentContainer.viewContext
+    let coreDM = CoreDataManager()
+    @State private var logRecords: [LogRecord] = []
     @State private var activityName: String = ""
-    @State private var activeLogRecord: LogRecord?
     
     var body: some View {
-        VStack {
-            Text(activeLogRecord != nil ? "Recording" : "")
-            TextField("Description", text: $activityName)
-                .textFieldStyle(.roundedBorder)
-                .padding()
-            Button("\(activeLogRecord != nil ? "Stop" : "Start") recording") {
-                buttonPressed()
+        NavigationView {
+            VStack {
+                TextField("Description", text: $activityName)
+                    .textFieldStyle(.roundedBorder)
+                    .padding()
+                Button("Start recording") {
+                    coreDM.saveLogRecord(title: activityName)
+                    populateLogRecords()
+                }
+                
+                List {
+                    ForEach(logRecords, id: \.self) { logRecord in
+                        HStack {
+                            Text(logRecord.activityName ?? "")
+                            Text(logRecord.startTime?.formatted(.dateTime.year().day().month().hour().minute().second()) ?? "")
+                            Spacer()
+                            if logRecord.endTime == nil {
+                                
+                                Button {
+                                    print("Button pressed")
+                                    logRecord.endTime = Date()
+                                    coreDM.updateLogRecord()
+                                } label: {
+                                    Circle()
+                                        .frame(width: 20, height: 20)
+                                        .foregroundColor(.red)
+                                }
+                            }
+                        }
+                    }
+                    .onDelete { indexSet in
+                        indexSet.forEach { index in
+                            let logRecord = logRecords[index]
+                            coreDM.deleteLogRecord(logRecord: logRecord)
+                            populateLogRecords()
+                        }
+                    }
+                }
             }
+            .navigationTitle("Log records")
+            .task { populateLogRecords() }
         }
     }
     
-    func buttonPressed() {
-        
-        if activeLogRecord == nil {
-            let newLogRecord = LogRecord(context: context)
-            newLogRecord.activityName = activityName
-            newLogRecord.startTime = Date()
-            activeLogRecord = newLogRecord
-        } else {
-            activeLogRecord?.endTime = Date()
-            do {
-                try context.save()
-            } catch {
-                print("Error")
-            }
-        }
+    func populateLogRecords() {
+        logRecords = coreDM.getAllLogRecords()
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

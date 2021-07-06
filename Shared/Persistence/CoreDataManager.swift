@@ -22,7 +22,7 @@ class CoreDataManager {
     }
     
     
-    func saveMovie(title: String) {
+    func saveLogRecord(title: String) {
         
         let logRecord = LogRecord(context: persistentContainer.viewContext)
         logRecord.activityName = title
@@ -30,9 +30,33 @@ class CoreDataManager {
 
         do {
             try persistentContainer.viewContext.save()
-            print("Movie saved.")
+            print("Log record saved.")
         } catch {
             print("Failed to save movie: \(error)")
+            persistentContainer.viewContext.rollback()
+        }
+    }
+    
+    
+    func updateLogRecord() {
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            print("Couldn't update log record.")
+            persistentContainer.viewContext.rollback()
+        }
+    }
+    
+    
+    func deleteLogRecord(logRecord: LogRecord) {
+        persistentContainer.viewContext.delete(logRecord)
+        
+        do {
+            try persistentContainer.viewContext.save()
+            print("Log record deleted.")
+        } catch {
+            print("Failed to delete log record: \(error)")
+            persistentContainer.viewContext.rollback()
         }
     }
     
