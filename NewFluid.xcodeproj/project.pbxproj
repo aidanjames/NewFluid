@@ -77,9 +77,9 @@
 			children = (
 				3D08BA29268666EF00A18DC5 /* NewFluidApp.swift */,
 				3D0215D9269213E600815C7F /* Views */,
+				3DF4E3E9268A5C14009FF3AC /* Persistence */,
 				3DF4E3F1268A5E01009FF3AC /* Extensions */,
 				3DF4E3ED268A5C39009FF3AC /* TempModel */,
-				3DF4E3E9268A5C14009FF3AC /* Persistence */,
 				3D08BA2C268666F100A18DC5 /* Assets.xcassets */,
 				3D08BA27268666EF00A18DC5 /* NewFluid.xcdatamodeld */,
 			);

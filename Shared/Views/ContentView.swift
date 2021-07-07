@@ -11,6 +11,7 @@ struct ContentView: View {
     let coreDM = CoreDataManager()
     @State private var logRecords: [LogRecord] = []
     @State private var activityName: String = ""
+    @State private var refreshRequired: Bool = false
     
     var body: some View {
         NavigationView {
@@ -21,6 +22,7 @@ struct ContentView: View {
                 Button("Start recording") {
                     coreDM.saveLogRecord(title: activityName)
                     populateLogRecords()
+                    activityName = ""
                 }
                 
                 List {
@@ -30,11 +32,10 @@ struct ContentView: View {
                             Text(logRecord.startTime?.formatted(.dateTime.year().day().month().hour().minute().second()) ?? "")
                             Spacer()
                             if logRecord.endTime == nil {
-                                
                                 Button {
-                                    print("Button pressed")
                                     logRecord.endTime = Date()
                                     coreDM.updateLogRecord()
+                                    refreshRequired.toggle()
                                 } label: {
                                     Circle()
                                         .frame(width: 20, height: 20)
@@ -54,6 +55,7 @@ struct ContentView: View {
             }
             .navigationTitle("Log records")
             .task { populateLogRecords() }
+            .accentColor(refreshRequired ? .blue : .blue)
         }
     }
     
