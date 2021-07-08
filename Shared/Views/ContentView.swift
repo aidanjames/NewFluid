@@ -24,7 +24,7 @@ struct ContentView: View {
                     populateLogRecords()
                     activityName = ""
                 }
-                
+                .disabled(activityName.isEmpty)
                 List {
                     ForEach(logRecords, id: \.self) { logRecord in
                         HStack {
@@ -55,7 +55,7 @@ struct ContentView: View {
             }
             .navigationTitle("Log records")
             .task { populateLogRecords() }
-            .accentColor(refreshRequired ? .blue : .blue)
+            .accentColor(refreshRequired ? .blue : .blue) // Workaround so list updates following .updateLogRecord()
         }
     }
     
