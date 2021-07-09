@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     let coreDM = CoreDataManager()
+    @ObservedObject var timer = TimerManager()
     @State private var logRecords: [LogRecord] = []
     @State private var activityName: String = ""
     @State private var refreshRequired: Bool = false
@@ -25,10 +26,11 @@ struct ContentView: View {
                     activityName = ""
                 }
                 .disabled(activityName.isEmpty)
+                Text("\(Int.random(in: 1..<500))")
                 List {
                     ForEach(logRecords, id: \.self) { logRecord in
                         HStack {
-                            Text(logRecord.activityName ?? "")
+                            Text(logRecord.activityName ?? "").bold()
                             Text(logRecord.startTime?.formatted(.dateTime.year().day().month().hour().minute().second()) ?? "")
                             Spacer()
                             if logRecord.endTime == nil {
@@ -37,9 +39,12 @@ struct ContentView: View {
                                     coreDM.updateLogRecord()
                                     refreshRequired.toggle()
                                 } label: {
-                                    Circle()
-                                        .frame(width: 20, height: 20)
+                                    HStack {
+                                        Text("\(logRecord.startTime!.difference())")
+                                        Circle()
+                                            .frame(width: 20, height: 20)
                                         .foregroundColor(.red)
+                                    }
                                 }
                             }
                         }

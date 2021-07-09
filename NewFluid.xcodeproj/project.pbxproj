@@ -13,6 +13,9 @@
 		3D08BA3B268666F100A18DC5 /* NewFluidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D08BA29268666EF00A18DC5 /* NewFluidApp.swift */; };
 		3D08BA40268666F100A18DC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D08BA2C268666F100A18DC5 /* Assets.xcassets */; };
 		3D08BA41268666F100A18DC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D08BA2C268666F100A18DC5 /* Assets.xcassets */; };
+		3D2A61DC2698BC6D00778347 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2A61DB2698BC6D00778347 /* TimerManager.swift */; };
+		3D2A61DE2698C09D00778347 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2A61DD2698C09D00778347 /* Date+Ext.swift */; };
+		3D2A61E02698C1D600778347 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2A61DF2698C1D600778347 /* Double+Ext.swift */; };
 		3D66FC08268F0AD4004BFBD8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D66FC07268F0AD4004BFBD8 /* ContentView.swift */; };
 		3D66FC09268F0AD4004BFBD8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D66FC07268F0AD4004BFBD8 /* ContentView.swift */; };
 		3DE7E314268EF88600AD8D54 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE7E313268EF88600AD8D54 /* CoreDataManager.swift */; };
@@ -31,6 +34,9 @@
 		3D08BA2C268666F100A18DC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D08BA31268666F100A18DC5 /* NewFluid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewFluid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D08BA37268666F100A18DC5 /* NewFluid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewFluid.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D2A61DB2698BC6D00778347 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		3D2A61DD2698C09D00778347 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		3D2A61DF2698C1D600778347 /* Double+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Ext.swift"; sourceTree = "<group>"; };
 		3D66FC07268F0AD4004BFBD8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3DE7E313268EF88600AD8D54 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		3DF4E3EA268A5C34009FF3AC /* TempPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempPersistenceManager.swift; sourceTree = "<group>"; };
@@ -75,6 +81,7 @@
 		3D08BA26268666EF00A18DC5 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				3D2A61DA2698BC5800778347 /* Managers */,
 				3D08BA29268666EF00A18DC5 /* NewFluidApp.swift */,
 				3D0215D9269213E600815C7F /* Views */,
 				3DF4E3E9268A5C14009FF3AC /* Persistence */,
@@ -93,6 +100,14 @@
 				3D08BA37268666F100A18DC5 /* NewFluid.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		3D2A61DA2698BC5800778347 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				3D2A61DB2698BC6D00778347 /* TimerManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		3DF4E3E9268A5C14009FF3AC /* Persistence */ = {
@@ -116,6 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				3DF4E3F2268A5E16009FF3AC /* FileManager+Ext.swift */,
+				3D2A61DD2698C09D00778347 /* Date+Ext.swift */,
+				3D2A61DF2698C1D600778347 /* Double+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -218,8 +235,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D2A61DE2698C09D00778347 /* Date+Ext.swift in Sources */,
 				3DF4E3F3268A5E16009FF3AC /* FileManager+Ext.swift in Sources */,
+				3D2A61DC2698BC6D00778347 /* TimerManager.swift in Sources */,
 				3DF4E3EF268A5C4B009FF3AC /* TempActivityModel.swift in Sources */,
+				3D2A61E02698C1D600778347 /* Double+Ext.swift in Sources */,
 				3D66FC08268F0AD4004BFBD8 /* ContentView.swift in Sources */,
 				3D08BA38268666F100A18DC5 /* NewFluid.xcdatamodeld in Sources */,
 				3DF4E3EB268A5C34009FF3AC /* TempPersistenceManager.swift in Sources */,
