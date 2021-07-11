@@ -36,37 +36,39 @@ struct ContentView: View {
                     activityName = ""
                 }
                 .disabled(activityName.isEmpty)
-                List {
-                    ForEach(filteredLogRecords, id: \.self) { logRecord in
-                        HStack {
-                            Text(logRecord.activityName ?? "").bold()
-                            Text(logRecord.startTime?.formatted(.dateTime.year().day().month().hour().minute().second()) ?? "").fontWeight(.light)
-                            Spacer()
-                            if logRecord.endTime == nil {
-                                HStack {
-                                    Text("\(logRecord.startTime!.difference())")
-                                    Button {
-                                        logRecord.endTime = Date()
-                                        coreDM.updateLogRecord()
-                                        refreshRequired.toggle()
-                                    } label: {
-                                        Circle()
-                                            .frame(width: 20, height: 20)
-                                            .foregroundColor(.red)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .onDelete { indexSet in
-                        indexSet.forEach { index in
-                            let logRecord = logRecords[index]
-                            coreDM.deleteLogRecord(logRecord: logRecord)
-                            populateLogRecords()
-                        }
-                    }
-                }
-                .searchable(text: $searchText)
+                
+                LogActivityListView(coreDM: coreDM)
+//                List {
+//                    ForEach(filteredLogRecords, id: \.self) { logRecord in
+//                        HStack {
+//                            Text(logRecord.activityName ?? "").bold()
+//                            Text(logRecord.startTime?.formatted(.dateTime.year().day().month().hour().minute().second()) ?? "").fontWeight(.light)
+//                            Spacer()
+//                            if logRecord.endTime == nil {
+//                                HStack {
+//                                    Text("\(logRecord.startTime!.difference())")
+//                                    Button {
+//                                        logRecord.endTime = Date()
+//                                        coreDM.updateLogRecord()
+//                                        refreshRequired.toggle()
+//                                    } label: {
+//                                        Circle()
+//                                            .frame(width: 20, height: 20)
+//                                            .foregroundColor(.red)
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                    .onDelete { indexSet in
+//                        indexSet.forEach { index in
+//                            let logRecord = logRecords[index]
+//                            coreDM.deleteLogRecord(logRecord: logRecord)
+//                            populateLogRecords()
+//                        }
+//                    }
+//                }
+//                .searchable(text: $searchText)
             }
             .navigationTitle("Log records")
             .task { populateLogRecords() }
