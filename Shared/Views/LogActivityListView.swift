@@ -10,10 +10,11 @@ import SwiftUI
 struct LogActivityListView: View {
     
     let coreDM: CoreDataManager
+    @Binding var refreshRequired: Bool
+    @ObservedObject var timer: TimerManager
     
-    @State private var logRecords: [LogRecord] = []
+    @Binding var logRecords: [LogRecord]
     @State private var activityName: String = ""
-    @State private var refreshRequired: Bool = false
     @State private var searchText: String = ""
     
     var filteredLogRecords: [LogRecord] {
@@ -52,16 +53,16 @@ struct LogActivityListView: View {
                 indexSet.forEach { index in
                     let logRecord = logRecords[index]
                     coreDM.deleteLogRecord(logRecord: logRecord)
+                    refreshRequired.toggle()
                     populateLogRecords()
                 }
             }
-            .searchable(text: $searchText)
+            .accentColor(refreshRequired ? .blue : .blue) // Workaround so list updates following .updateLogRecord()
+
         }
         .task { populateLogRecords() }
+        .searchable(text: $searchText)
 
-        
-        
-        
     }
     
     func populateLogRecords() {
@@ -73,6 +74,6 @@ struct LogActivityListView_Previews: PreviewProvider {
     
     static var previews: some View {
         let coreDmPreview = CoreDataManager()
-        LogActivityListView(coreDM: coreDmPreview)
+        LogActivityListView(coreDM: coreDmPreview, refreshRequired: .constant(false), timer: TimerManager(), logRecords: .constant([]))
     }
 }

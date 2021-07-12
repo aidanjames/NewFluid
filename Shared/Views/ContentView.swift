@@ -9,76 +9,39 @@ import SwiftUI
 
 struct ContentView: View {
     let coreDM = CoreDataManager()
-    @ObservedObject var timer = TimerManager()
-    @State private var logRecords: [LogRecord] = []
+    @StateObject var timer = TimerManager()
     @State private var activityName: String = ""
     @State private var refreshRequired: Bool = false
-    @State private var searchText: String = ""
-    
-    var filteredLogRecords: [LogRecord] {
-            if searchText.isEmpty {
-                return logRecords
-            } else {
-                return logRecords.filter {
-                    $0.activityName!.lowercased().contains(searchText.lowercased()) }
-            }
-        }
-    
+    @State private var logRecords: [LogRecord] = []
+
     var body: some View {
         NavigationView {
             VStack {
+                
                 TextField("Description", text: $activityName)
                     .textFieldStyle(.roundedBorder)
                     .padding()
+                
                 Button("Start recording") {
                     coreDM.saveLogRecord(title: activityName)
-                    populateLogRecords()
                     activityName = ""
+                    populateLogRecords()
+                    refreshRequired.toggle()
                 }
                 .disabled(activityName.isEmpty)
                 
-                LogActivityListView(coreDM: coreDM)
-//                List {
-//                    ForEach(filteredLogRecords, id: \.self) { logRecord in
-//                        HStack {
-//                            Text(logRecord.activityName ?? "").bold()
-//                            Text(logRecord.startTime?.formatted(.dateTime.year().day().month().hour().minute().second()) ?? "").fontWeight(.light)
-//                            Spacer()
-//                            if logRecord.endTime == nil {
-//                                HStack {
-//                                    Text("\(logRecord.startTime!.difference())")
-//                                    Button {
-//                                        logRecord.endTime = Date()
-//                                        coreDM.updateLogRecord()
-//                                        refreshRequired.toggle()
-//                                    } label: {
-//                                        Circle()
-//                                            .frame(width: 20, height: 20)
-//                                            .foregroundColor(.red)
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-//                    .onDelete { indexSet in
-//                        indexSet.forEach { index in
-//                            let logRecord = logRecords[index]
-//                            coreDM.deleteLogRecord(logRecord: logRecord)
-//                            populateLogRecords()
-//                        }
-//                    }
-//                }
-//                .searchable(text: $searchText)
+                LogActivityListView(coreDM: coreDM, refreshRequired: $refreshRequired, timer: timer, logRecords: $logRecords)
+
             }
             .navigationTitle("Log records")
-            .task { populateLogRecords() }
-            .accentColor(refreshRequired ? .blue : .blue) // Workaround so list updates following .updateLogRecord()
+            
         }
     }
     
     func populateLogRecords() {
         logRecords = coreDM.getAllLogRecords()
     }
+
     
 }
 
