@@ -30,12 +30,13 @@ struct LogActivityListView: View {
         List {
             ForEach(filteredLogRecords, id: \.self) { logRecord in
                 HStack {
+                    
                     Text(logRecord.activityName ?? "").bold()
                     Text(logRecord.startTime?.formatted(.dateTime.year().day().month().hour().minute().second()) ?? "").fontWeight(.light)
                     Spacer()
                     if logRecord.endTime == nil {
                         HStack {
-                            Text("\(logRecord.startTime!.difference())")
+                            Text("\(logRecord.startTime!.secondsSinceDate().secondsToHoursMinsSecs())")
                             Button {
                                 logRecord.endTime = Date()
                                 coreDM.updateLogRecord()
@@ -58,11 +59,11 @@ struct LogActivityListView: View {
                 }
             }
             .accentColor(refreshRequired ? .blue : .blue) // Workaround so list updates following .updateLogRecord()
-
+            
         }
         .task { populateLogRecords() }
         .searchable(text: $searchText)
-
+        
     }
     
     func populateLogRecords() {
