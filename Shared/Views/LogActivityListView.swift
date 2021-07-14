@@ -37,6 +37,7 @@ struct LogActivityListView: View {
                     if logRecord.endTime == nil {
                         HStack {
                             Text("\(logRecord.startTime!.secondsSinceDate().secondsToHoursMinsSecs())")
+                                .font(.system(.body, design: .monospaced))
                             Button {
                                 logRecord.endTime = Date()
                                 coreDM.updateLogRecord()
