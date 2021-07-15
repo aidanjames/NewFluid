@@ -21,6 +21,8 @@
 		3D7B00AB269E165800FF7131 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7B00AA269E165800FF7131 /* Int+Ext.swift */; };
 		3D7CA2F7269B375B00E3E2A2 /* LogActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CA2F6269B375B00E3E2A2 /* LogActivityListView.swift */; };
 		3D7CA2F8269B375B00E3E2A2 /* LogActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CA2F6269B375B00E3E2A2 /* LogActivityListView.swift */; };
+		3DC8162B26A0A9AF00B0E042 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8162A26A0A9AF00B0E042 /* ActivityView.swift */; };
+		3DC8162C26A0A9AF00B0E042 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC8162A26A0A9AF00B0E042 /* ActivityView.swift */; };
 		3DE7E314268EF88600AD8D54 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE7E313268EF88600AD8D54 /* CoreDataManager.swift */; };
 		3DE7E315268EF88600AD8D54 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE7E313268EF88600AD8D54 /* CoreDataManager.swift */; };
 		3DF4E3EB268A5C34009FF3AC /* TempPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF4E3EA268A5C34009FF3AC /* TempPersistenceManager.swift */; };
@@ -43,6 +45,7 @@
 		3D66FC07268F0AD4004BFBD8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3D7B00AA269E165800FF7131 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
 		3D7CA2F6269B375B00E3E2A2 /* LogActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogActivityListView.swift; sourceTree = "<group>"; };
+		3DC8162A26A0A9AF00B0E042 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		3DE7E313268EF88600AD8D54 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		3DF4E3EA268A5C34009FF3AC /* TempPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempPersistenceManager.swift; sourceTree = "<group>"; };
 		3DF4E3EE268A5C4B009FF3AC /* TempActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempActivityModel.swift; sourceTree = "<group>"; };
@@ -72,6 +75,7 @@
 			children = (
 				3D66FC07268F0AD4004BFBD8 /* ContentView.swift */,
 				3D7CA2F6269B375B00E3E2A2 /* LogActivityListView.swift */,
+				3DC8162A26A0A9AF00B0E042 /* ActivityView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -244,6 +248,7 @@
 			files = (
 				3D2A61DE2698C09D00778347 /* Date+Ext.swift in Sources */,
 				3DF4E3F3268A5E16009FF3AC /* FileManager+Ext.swift in Sources */,
+				3DC8162B26A0A9AF00B0E042 /* ActivityView.swift in Sources */,
 				3D2A61DC2698BC6D00778347 /* TimerManager.swift in Sources */,
 				3DF4E3EF268A5C4B009FF3AC /* TempActivityModel.swift in Sources */,
 				3D2A61E02698C1D600778347 /* Double+Ext.swift in Sources */,
@@ -266,6 +271,7 @@
 				3D7CA2F8269B375B00E3E2A2 /* LogActivityListView.swift in Sources */,
 				3D66FC09268F0AD4004BFBD8 /* ContentView.swift in Sources */,
 				3D08BA39268666F100A18DC5 /* NewFluid.xcdatamodeld in Sources */,
+				3DC8162C26A0A9AF00B0E042 /* ActivityView.swift in Sources */,
 				3DF4E3EC268A5C34009FF3AC /* TempPersistenceManager.swift in Sources */,
 				3D08BA3B268666F100A18DC5 /* NewFluidApp.swift in Sources */,
 				3DE7E315268EF88600AD8D54 /* CoreDataManager.swift in Sources */,
