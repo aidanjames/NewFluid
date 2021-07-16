@@ -44,7 +44,7 @@ struct LogActivityListView: View {
                                 refreshRequired.toggle()
                             } label: {
                                 Circle()
-                                    .frame(width: 20, height: 20)
+                                    .frame(width: 30, height: 30)
                                     .foregroundColor(.red)
                             }
                         }
