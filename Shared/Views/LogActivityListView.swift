@@ -29,27 +29,28 @@ struct LogActivityListView: View {
     var body: some View {
         List {
             ForEach(filteredLogRecords, id: \.self) { logRecord in
-                HStack {
-                    
-                    Text(logRecord.activityName ?? "").bold()
-                    Text(logRecord.startTime?.formatted(.dateTime.year().day().month().hour().minute().second()) ?? "").fontWeight(.light)
-                    Spacer()
-                    if logRecord.endTime == nil {
-                        HStack {
-                            Text("\(logRecord.startTime!.secondsSinceDate().secondsToHoursMinsSecs())")
-                                .font(.system(.body, design: .monospaced))
-                            Button {
-                                logRecord.endTime = Date()
-                                coreDM.updateLogRecord()
-                                refreshRequired.toggle()
-                            } label: {
-                                Circle()
-                                    .frame(width: 30, height: 30)
-                                    .foregroundColor(.red)
-                            }
-                        }
-                    }
-                }
+                ActivityView(logRecord: logRecord, refreshRequired: $refreshRequired)
+//                HStack {
+//
+//                    Text(logRecord.activityName ?? "").bold()
+//                    Text(logRecord.startTime?.formatted(.dateTime.year().day().month().hour().minute().second()) ?? "").fontWeight(.light)
+//                    Spacer()
+//                    if logRecord.endTime == nil {
+//                        HStack {
+//                            Text("\(logRecord.startTime!.secondsSinceDate().secondsToHoursMinsSecs())")
+//                                .font(.system(.body, design: .monospaced))
+//                            Button {
+//                                logRecord.endTime = Date()
+//                                coreDM.updateLogRecord()
+//                                refreshRequired.toggle()
+//                            } label: {
+//                                Circle()
+//                                    .frame(width: 30, height: 30)
+//                                    .foregroundColor(.red)
+//                            }
+//                        }
+//                    }
+//                }
             }
             .onDelete { indexSet in
                 indexSet.forEach { index in
