@@ -30,11 +30,11 @@ struct ContentView: View {
                 }
                 .disabled(activityName.isEmpty)
                 
-                LogActivityListView(coreDM: coreDM, refreshRequired: $refreshRequired, timer: timer, logRecords: $logRecords)
+                LogActivityListView(coreDM: coreDM, refreshRequired: $refreshRequired, logRecords: $logRecords)
 
             }
             .navigationTitle("Log records")
-            
+            .environmentObject(timer)
         }
     }
     

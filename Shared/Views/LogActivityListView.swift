@@ -10,9 +10,7 @@ import SwiftUI
 struct LogActivityListView: View {
     
     let coreDM: CoreDataManager
-    @Binding var refreshRequired: Bool
-    @ObservedObject var timer: TimerManager
-    
+    @Binding var refreshRequired: Bool    
     @Binding var logRecords: [LogRecord]
     @State private var activityName: String = ""
     @State private var searchText: String = ""
@@ -30,27 +28,6 @@ struct LogActivityListView: View {
         List {
             ForEach(filteredLogRecords, id: \.self) { logRecord in
                 ActivityView(logRecord: logRecord, refreshRequired: $refreshRequired)
-//                HStack {
-//
-//                    Text(logRecord.activityName ?? "").bold()
-//                    Text(logRecord.startTime?.formatted(.dateTime.year().day().month().hour().minute().second()) ?? "").fontWeight(.light)
-//                    Spacer()
-//                    if logRecord.endTime == nil {
-//                        HStack {
-//                            Text("\(logRecord.startTime!.secondsSinceDate().secondsToHoursMinsSecs())")
-//                                .font(.system(.body, design: .monospaced))
-//                            Button {
-//                                logRecord.endTime = Date()
-//                                coreDM.updateLogRecord()
-//                                refreshRequired.toggle()
-//                            } label: {
-//                                Circle()
-//                                    .frame(width: 30, height: 30)
-//                                    .foregroundColor(.red)
-//                            }
-//                        }
-//                    }
-//                }
             }
             .onDelete { indexSet in
                 indexSet.forEach { index in
@@ -77,6 +54,6 @@ struct LogActivityListView_Previews: PreviewProvider {
     
     static var previews: some View {
         let coreDmPreview = CoreDataManager()
-        LogActivityListView(coreDM: coreDmPreview, refreshRequired: .constant(false), timer: TimerManager(), logRecords: .constant([]))
+        LogActivityListView(coreDM: coreDmPreview, refreshRequired: .constant(false), logRecords: .constant([]))
     }
 }

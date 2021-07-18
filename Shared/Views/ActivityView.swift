@@ -12,7 +12,7 @@ struct ActivityView: View {
     var logRecord: LogRecord
     
     @Binding var refreshRequired: Bool
-    
+    @EnvironmentObject var timer: TimerManager
     
     var body: some View {
         HStack {
