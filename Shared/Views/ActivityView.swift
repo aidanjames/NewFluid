@@ -17,13 +17,17 @@ struct ActivityView: View {
     var body: some View {
         HStack {
             
-            Text(logRecord.activityName ?? "").bold()
-            Text(logRecord.startTime?.formatted(.dateTime.year().day().month().hour().minute().second()) ?? "").fontWeight(.light)
+            VStack(alignment: .leading) {
+                Text(logRecord.activityName ?? "").bold()
+                Text(logRecord.startTime?.formatted(.dateTime.year().day().month().hour().minute().second()) ?? "").fontWeight(.light).font(.caption2)
+            }
+            
             Spacer()
+            
             if logRecord.endTime == nil {
                 HStack {
                     Text("\(logRecord.startTime!.secondsSinceDate().secondsToHoursMinsSecs())")
-                        .font(.system(.body, design: .monospaced))
+                        .font(Font.system(.body).monospacedDigit())
                     Button {
                         logRecord.endTime = Date()
                         refreshRequired.toggle()
