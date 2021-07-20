@@ -18,15 +18,18 @@ struct ActivityView: View {
         HStack {
             
             VStack(alignment: .leading) {
-                Text(logRecord.activityName ?? "").bold()
-                Text(logRecord.startTime?.formatted(.dateTime.year().day().month().hour().minute().second()) ?? "").fontWeight(.light).font(.caption2)
+                Text(logRecord.activityName ?? "").bold().padding(.bottom, 3)
+                Text("Start: \(logRecord.startTime?.formatted(.dateTime.day().month().hour().minute().second()) ?? "")").fontWeight(.light).font(.caption2)
+                if logRecord.endTime != nil {
+                    Text("End:   \(logRecord.endTime?.formatted(.dateTime.day().month().hour().minute().second()) ?? "")").fontWeight(.light).font(.caption2)
+                }
             }
             
             Spacer()
             
             if logRecord.endTime == nil {
                 HStack {
-                    Text("\(logRecord.startTime!.secondsSinceDate().secondsToHoursMinsSecs())")
+                    Text("\(logRecord.startTime?.secondsSinceDate().secondsToHoursMinsSecs() ?? "")")
                         .font(Font.system(.body).monospacedDigit())
                     Button {
                         logRecord.endTime = Date()
