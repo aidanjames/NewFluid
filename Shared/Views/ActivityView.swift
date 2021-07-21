@@ -31,14 +31,14 @@ struct ActivityView: View {
                 HStack {
                     Text("\(logRecord.startTime?.secondsSinceDate().secondsToHoursMinsSecs() ?? "")")
                         .font(Font.system(.body).monospacedDigit())
-                    Button {
-                        logRecord.endTime = Date()
-                        refreshRequired.toggle()
-                    } label: {
-                        Circle()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(.red)
-                    }
+                    
+                    Circle()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(.red)
+                        .onTapGesture {
+                            logRecord.endTime = Date()
+                            refreshRequired.toggle()
+                        }
                 }
             }
         }
@@ -46,7 +46,7 @@ struct ActivityView: View {
 }
 
 struct ActivityView_Previews: PreviewProvider {
-
+    
     
     static var previews: some View {
         
