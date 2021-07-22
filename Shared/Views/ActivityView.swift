@@ -40,9 +40,22 @@ struct ActivityView: View {
                             refreshRequired.toggle()
                         }
                 }
+            } else {
+                Image(systemName: "play.fill")
+                    .foregroundColor(.green)
+                    .frame(width: 20, height: 20)
+                    .onTapGesture {
+                        startNewRecordingForExistingActivity(activtyName: logRecord.activityName ?? "")
+                    }
             }
         }
     }
+    
+    func startNewRecordingForExistingActivity(activtyName: String) {
+        // TODO
+        print(activtyName)
+    }
+    
 }
 
 struct ActivityView_Previews: PreviewProvider {
