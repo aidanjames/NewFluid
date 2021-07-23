@@ -27,7 +27,7 @@ struct LogActivityListView: View {
     var body: some View {
         List {
             ForEach(filteredLogRecords, id: \.self) { logRecord in
-                ActivityView(logRecord: logRecord, refreshRequired: $refreshRequired)
+                ActivityView(logRecord: logRecord, coreDM: coreDM, refreshRequired: $refreshRequired, logRecords: $logRecords)
             }
             .onDelete { indexSet in
                 indexSet.forEach { index in

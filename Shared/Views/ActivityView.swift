@@ -10,8 +10,10 @@ import SwiftUI
 struct ActivityView: View {
     
     var logRecord: LogRecord
+    var coreDM: CoreDataManager
     
     @Binding var refreshRequired: Bool
+    @Binding var logRecords: [LogRecord]
     @EnvironmentObject var timer: TimerManager
     
     var body: some View {
@@ -45,15 +47,18 @@ struct ActivityView: View {
                     .foregroundColor(.green)
                     .frame(width: 20, height: 20)
                     .onTapGesture {
-                        startNewRecordingForExistingActivity(activtyName: logRecord.activityName ?? "")
+                        startNewRecordingForExistingActivity(activityName: logRecord.activityName ?? "")
                     }
             }
         }
     }
     
-    func startNewRecordingForExistingActivity(activtyName: String) {
+    func startNewRecordingForExistingActivity(activityName: String) {
         // TODO
-        print(activtyName)
+        print(activityName)
+        coreDM.saveLogRecord(title: activityName)
+        logRecords = coreDM.getAllLogRecords()
+        refreshRequired.toggle()
     }
     
 }
@@ -68,6 +73,6 @@ struct ActivityView_Previews: PreviewProvider {
         logRecord.activityName = "Discovery"
         logRecord.startTime = Date()
         
-        return ActivityView(logRecord: logRecord, refreshRequired: .constant(false))
+        return ActivityView(logRecord: logRecord, coreDM: coreDM, refreshRequired: .constant(false), logRecords: .constant([]))
     }
 }
