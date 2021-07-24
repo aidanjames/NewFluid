@@ -22,9 +22,7 @@ struct ActivityView: View {
             VStack(alignment: .leading) {
                 Text(logRecord.activityName ?? "").bold().padding(.bottom, 3)
                 Text("Start: \(logRecord.startTime?.formatted(.dateTime.day().month().hour().minute().second()) ?? "")").fontWeight(.light).font(.caption2)
-                if logRecord.endTime != nil {
-                    Text("End:   \(logRecord.endTime?.formatted(.dateTime.day().month().hour().minute().second()) ?? "")").fontWeight(.light).font(.caption2)
-                }
+                Text("End:   \(logRecord.endTime?.formatted(.dateTime.day().month().hour().minute().second()) ?? "Logging")").fontWeight(.light).font(.caption2).foregroundColor(logRecord.endTime == nil ? .red : .primary)
             }
             
             Spacer()
