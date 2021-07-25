@@ -28,18 +28,27 @@ struct ActivityView: View {
             Spacer()
             
             if logRecord.endTime == nil {
-                HStack {
-                    Text("\(logRecord.startTime?.secondsSinceDate().secondsToHoursMinsSecs() ?? "")")
-                        .font(Font.system(.body).monospacedDigit())
-                    
-                    Circle()
-                        .frame(width: 20, height: 20)
-                        .foregroundColor(.red)
+                VStack {
+                    HStack {
+                        Text("\(logRecord.startTime?.secondsSinceDate().secondsToHoursMinsSecs() ?? "")")
+                            .font(Font.system(.body).monospacedDigit())
+                        
+                        Circle()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(.red)
+                            .onTapGesture {
+                                logRecord.endTime = Date()
+                                refreshRequired.toggle()
+                            }
+                    }
+                    Image(systemName: "tray.and.arrow.up.fill")
+                        .foregroundColor(.blue)
                         .onTapGesture {
-                            logRecord.endTime = Date()
-                            refreshRequired.toggle()
+                            let activityNameUnwrapped = logRecord.activityName ?? "Issue"
+                            ThingsManager.shared.newToDo(title: activityNameUnwrapped)
                         }
                 }
+                
             } else {
                 Image(systemName: "play.fill")
                     .foregroundColor(.green)
