@@ -45,7 +45,7 @@ struct ActivityView: View {
                         .foregroundColor(.blue)
                         .onTapGesture {
                             let activityNameUnwrapped = logRecord.activityName ?? "Issue"
-                            ThingsManager.shared.newToDo(title: activityNameUnwrapped)
+                            ThingsManager.shared.newToDo(title: activityNameUnwrapped, date: nil)
                         }
                 }
                 
