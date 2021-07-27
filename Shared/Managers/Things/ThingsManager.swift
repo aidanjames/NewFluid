@@ -19,10 +19,17 @@ class ThingsManager {
     
     
     func newToDo(title: String, date: Date?) {
-        let todo = TJSTodo(title: title, when: "today")
-        // TODO - Accept a date and transform
         
+        var myDate: String = "today"
         
+        if let date = date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-mm-d"
+            myDate = dateFormatter.string(from: date)
+        }
+        
+        let todo = TJSTodo(title: title, when: myDate)
+
         let container = TJSContainer(items: [.todo(todo)])
         do {
             let encoder = JSONEncoder()

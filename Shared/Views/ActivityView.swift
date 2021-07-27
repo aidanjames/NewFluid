@@ -45,7 +45,8 @@ struct ActivityView: View {
                         .foregroundColor(.blue)
                         .onTapGesture {
                             let activityNameUnwrapped = logRecord.activityName ?? "Issue"
-                            ThingsManager.shared.newToDo(title: activityNameUnwrapped, date: nil)
+                            // TODO - Allow the user to specify a date for the reminder
+                            ThingsManager.shared.newToDo(title: activityNameUnwrapped, date: Date())
                         }
                 }
                 
