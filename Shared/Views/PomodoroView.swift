@@ -9,7 +9,19 @@ import SwiftUI
 
 struct PomodoroView: View {
     
-    @State private var progress: Double = 80
+    @Binding var progress: Double
+    @Binding var sessionType: SessionType
+    
+    var barColor: Color {
+        switch sessionType {
+        case .regularSession:
+            return .red
+        case .shortBreak:
+            return .green
+        case .longBreak:
+            return .blue
+        }
+    }
     
     var body: some View {
         
@@ -22,11 +34,12 @@ struct PomodoroView: View {
                         .cornerRadius(16)
                 }
                 HStack {
-                    Spacer()
+                    
                     Rectangle()
-                        .frame(width: geo.size.width * (100 - progress) / 100, height: 10)
-                        .foregroundColor(.green)
+                        .frame(width: geo.size.width * progress / 100, height: 10)
+                        .foregroundColor(barColor)
                         .cornerRadius(16)
+                    Spacer()
                 }
             }
         }
@@ -37,6 +50,12 @@ struct PomodoroView: View {
 
 struct PomodoroView_Previews: PreviewProvider {
     static var previews: some View {
-        PomodoroView()
+        PomodoroView(progress: .constant(84), sessionType: .constant(.regularSession))
     }
+}
+
+enum SessionType {
+    case regularSession
+    case shortBreak
+    case longBreak
 }
