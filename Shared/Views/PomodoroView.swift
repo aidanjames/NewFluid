@@ -9,8 +9,9 @@ import SwiftUI
 
 struct PomodoroView: View {
     
-    @Binding var progress: Double
     @Binding var sessionType: SessionType
+    @Binding var currentCounter: Double // Seconds into session
+    @Binding var sessionLength: Double // Total seconds for session
     
     var barColor: Color {
         switch sessionType {
@@ -22,6 +23,8 @@ struct PomodoroView: View {
             return .blue
         }
     }
+    
+    var progress: Double { (currentCounter / sessionLength) * 100 }
     
     var body: some View {
         
@@ -50,7 +53,7 @@ struct PomodoroView: View {
 
 struct PomodoroView_Previews: PreviewProvider {
     static var previews: some View {
-        PomodoroView(progress: .constant(84), sessionType: .constant(.regularSession))
+        PomodoroView(sessionType: .constant(.regularSession), currentCounter: .constant(10), sessionLength: .constant(60))
     }
 }
 
