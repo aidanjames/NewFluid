@@ -63,11 +63,4 @@ enum SessionType {
     case longBreak
 }
 
-class PomodoroSessionViewModel: ObservableObject {
-    
-    @Published var counter: Double = 0
-    @Published var sessionLength: Double = 0
-    @Published var currentSessionType: SessionType = .regularSession
 
-    
-}

@@ -14,6 +14,7 @@ struct LogActivityListView: View {
     @Binding var logRecords: [LogRecord]
     @State private var activityName: String = ""
     @State private var searchText: String = ""
+    @StateObject var pomodoroSessionVM = PomodoroSessionViewModel()
     
     var filteredLogRecords: [LogRecord] {
         if searchText.isEmpty {

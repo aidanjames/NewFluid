@@ -20,6 +20,7 @@
 		3D4CB9EA26AD770E00E64759 /* ThingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4CB9E926AD770E00E64759 /* ThingsManager.swift */; };
 		3D66FC08268F0AD4004BFBD8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D66FC07268F0AD4004BFBD8 /* ContentView.swift */; };
 		3D66FC09268F0AD4004BFBD8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D66FC07268F0AD4004BFBD8 /* ContentView.swift */; };
+		3D79876126B86FBE00548A95 /* PomodoroSessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D79876026B86FBE00548A95 /* PomodoroSessionViewModel.swift */; };
 		3D7B00AB269E165800FF7131 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7B00AA269E165800FF7131 /* Int+Ext.swift */; };
 		3D7CA2F7269B375B00E3E2A2 /* LogActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CA2F6269B375B00E3E2A2 /* LogActivityListView.swift */; };
 		3D7CA2F8269B375B00E3E2A2 /* LogActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7CA2F6269B375B00E3E2A2 /* LogActivityListView.swift */; };
@@ -50,6 +51,7 @@
 		3D4CB9E726AD75DE00E64759 /* ThingsJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingsJSON.swift; sourceTree = "<group>"; };
 		3D4CB9E926AD770E00E64759 /* ThingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingsManager.swift; sourceTree = "<group>"; };
 		3D66FC07268F0AD4004BFBD8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3D79876026B86FBE00548A95 /* PomodoroSessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroSessionViewModel.swift; sourceTree = "<group>"; };
 		3D7B00AA269E165800FF7131 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
 		3D7CA2F6269B375B00E3E2A2 /* LogActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogActivityListView.swift; sourceTree = "<group>"; };
 		3D97E3B526B3242100B92886 /* PomodoroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroView.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		3D0215D9269213E600815C7F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3D79875F26B86FA500548A95 /* ViewModels */,
 				3D66FC07268F0AD4004BFBD8 /* ContentView.swift */,
 				3D7CA2F6269B375B00E3E2A2 /* LogActivityListView.swift */,
 				3DC8162A26A0A9AF00B0E042 /* ActivityView.swift */,
@@ -126,8 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				3D2A61DB2698BC6D00778347 /* TimerManager.swift */,
-				3D4CB9E626AD757B00E64759 /* Things */,
 				3DC27D9B26B1CF5A00E04277 /* NotificationsManager.swift */,
+				3D4CB9E626AD757B00E64759 /* Things */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -139,6 +142,14 @@
 				3D4CB9E926AD770E00E64759 /* ThingsManager.swift */,
 			);
 			path = Things;
+			sourceTree = "<group>";
+		};
+		3D79875F26B86FA500548A95 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3D79876026B86FBE00548A95 /* PomodoroSessionViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		3DF4E3E9268A5C14009FF3AC /* Persistence */ = {
@@ -281,6 +292,7 @@
 				3DC27D9C26B1CF5A00E04277 /* NotificationsManager.swift in Sources */,
 				3DF4E3EB268A5C34009FF3AC /* TempPersistenceManager.swift in Sources */,
 				3D08BA3A268666F100A18DC5 /* NewFluidApp.swift in Sources */,
+				3D79876126B86FBE00548A95 /* PomodoroSessionViewModel.swift in Sources */,
 				3DE7E314268EF88600AD8D54 /* CoreDataManager.swift in Sources */,
 				3D4CB9E826AD75DE00E64759 /* ThingsJSON.swift in Sources */,
 				3D7B00AB269E165800FF7131 /* Int+Ext.swift in Sources */,
