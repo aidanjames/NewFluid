@@ -21,12 +21,23 @@ class PomodoroSessionViewModel: ObservableObject {
         return startTime!.secondsSinceDate()
     }
     
+    
     func startNewSession() {
         sessionCounter = 1
         startTime = Date()
         currentSessionType = .regularSession
         isActive = true
     }
+    
+    
+    func stopSession() {
+        isActive = false
+        startTime = nil
+        sessionLength = 0
+        currentSessionType = .regularSession
+        sessionCounter = 0
+    }
+    
     
     func rollSession() {
         switch currentSessionType {
