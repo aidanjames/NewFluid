@@ -12,6 +12,7 @@ class PomodoroSessionViewModel: ObservableObject {
     @Published var isActive = false
     @Published var startTime: Date?
     @Published var sessionLength: Double = 0
+    @Published var numberOfPomos: Int = 3
     @Published var currentSessionType: SessionType = .regularSession
     var sessionCounter = 0
 
@@ -42,7 +43,7 @@ class PomodoroSessionViewModel: ObservableObject {
     func rollSession() {
         switch currentSessionType {
         case .regularSession:
-            if sessionCounter % 3 == 0 {
+            if sessionCounter % numberOfPomos == 0 {
                 currentSessionType = .longBreak
             } else {
                 currentSessionType = .shortBreak
