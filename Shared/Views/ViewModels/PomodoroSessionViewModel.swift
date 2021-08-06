@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum SessionType {
+    case regularSession
+    case shortBreak
+    case longBreak
+}
+
 class PomodoroSessionViewModel: ObservableObject {
     
     @Published var isActive = false
@@ -56,3 +62,5 @@ class PomodoroSessionViewModel: ObservableObject {
     }
     
 }
+
+

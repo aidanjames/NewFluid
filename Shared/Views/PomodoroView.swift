@@ -29,20 +29,26 @@ struct PomodoroView: View {
     var body: some View {
         
         GeometryReader { geo in
-            ZStack {
-                HStack {
-                    Rectangle()
-                        .frame(width: geo.size.width, height: 10)
-                        .foregroundColor(.secondary)
-                        .cornerRadius(16)
-                }
-                HStack {
-                    
-                    Rectangle()
-                        .frame(width: geo.size.width * progress / 100, height: 10)
-                        .foregroundColor(barColor)
-                        .cornerRadius(16)
-                    Spacer()
+            
+            VStack {
+                Text("2.43")
+                    .font(.caption2)
+                    .offset(x: (geo.size.width * progress / 100) * -1)
+                ZStack {
+                    HStack {
+                        Rectangle()
+                            .frame(width: geo.size.width, height: 10)
+                            .foregroundColor(.secondary)
+                            .cornerRadius(16)
+                    }
+                    HStack {
+                        
+                        Rectangle()
+                            .frame(width: geo.size.width * progress / 100, height: 10)
+                            .foregroundColor(barColor)
+                            .cornerRadius(16)
+                        Spacer()
+                    }
                 }
             }
         }
@@ -57,10 +63,6 @@ struct PomodoroView_Previews: PreviewProvider {
     }
 }
 
-enum SessionType {
-    case regularSession
-    case shortBreak
-    case longBreak
-}
+
 
 
