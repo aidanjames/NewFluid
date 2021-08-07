@@ -31,9 +31,15 @@ struct PomodoroView: View {
         GeometryReader { geo in
             
             VStack {
-                Text("2.43")
-                    .font(.caption2)
-                    .offset(x: (geo.size.width * progress / 100) * -1)
+                HStack {
+                    Spacer().frame(width: (geo.size.width * progress / 100) - 30)
+                    Text(currentCounter.secondsToHoursMinsSecs())
+                    Spacer()
+                    if progress < 93 {
+                        Text(sessionLength.secondsToHoursMinsSecs())
+                    }
+                }
+                .font(.caption2)
                 ZStack {
                     HStack {
                         Rectangle()
@@ -42,7 +48,6 @@ struct PomodoroView: View {
                             .cornerRadius(16)
                     }
                     HStack {
-                        
                         Rectangle()
                             .frame(width: geo.size.width * progress / 100, height: 10)
                             .foregroundColor(barColor)
@@ -59,7 +64,7 @@ struct PomodoroView: View {
 
 struct PomodoroView_Previews: PreviewProvider {
     static var previews: some View {
-        PomodoroView(sessionType: .constant(.regularSession), currentCounter: .constant(10), sessionLength: .constant(60))
+        PomodoroView(sessionType: .constant(.regularSession), currentCounter: .constant(13), sessionLength: .constant(30))
     }
 }
 
