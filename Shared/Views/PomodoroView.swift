@@ -9,12 +9,12 @@ import SwiftUI
 
 struct PomodoroView: View {
     
-    @Binding var sessionType: SessionType
-    @Binding var currentCounter: Double // Seconds into session
-    @Binding var sessionLength: Double // Total seconds for session
+    @Binding var currentSessionType: SessionType
+    @Binding var currentSessionStartTime: Date
+    @Binding var currentSessionEndTime: Date
     
     var barColor: Color {
-        switch sessionType {
+        switch currentSessionType {
         case .regularSession:
             return .red
         case .shortBreak:
@@ -24,7 +24,7 @@ struct PomodoroView: View {
         }
     }
     
-    var progress: Double { (currentCounter / sessionLength) * 100 }
+    var progress: Double { (abs(currentSessionStartTime.secondsSinceDate()) / currentSessionEndTime.timeIntervalSince(currentSessionStartTime)) * 100 }
     
     var body: some View {
         
@@ -33,10 +33,10 @@ struct PomodoroView: View {
             VStack {
                 HStack {
                     Spacer().frame(width: (geo.size.width * progress / 100) - 30)
-                    Text(currentCounter.secondsToHoursMinsSecs())
+                    Text("\(abs(Date().timeIntervalSince(currentSessionStartTime)).secondsToHoursMinsSecs())")
                     Spacer()
                     if progress < 93 {
-                        Text(sessionLength.secondsToHoursMinsSecs())
+                        Text((currentSessionEndTime.timeIntervalSince(currentSessionStartTime)).secondsToHoursMinsSecs())
                     }
                 }
                 .font(.caption2)
@@ -64,7 +64,7 @@ struct PomodoroView: View {
 
 struct PomodoroView_Previews: PreviewProvider {
     static var previews: some View {
-        PomodoroView(sessionType: .constant(.regularSession), currentCounter: .constant(13), sessionLength: .constant(30))
+        PomodoroView(currentSessionType: .constant(.regularSession), currentSessionStartTime: .constant(Date().addingTimeInterval(-400)), currentSessionEndTime: .constant(Date().addingTimeInterval(1500)))
     }
 }
 

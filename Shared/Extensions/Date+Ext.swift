@@ -21,5 +21,4 @@ extension Date {
     
     func secondsSinceDate() -> TimeInterval { return Date().timeIntervalSince(self) }
     
-
 }
