@@ -12,6 +12,7 @@ struct PomodoroView: View {
     @Binding var currentSessionType: SessionType
     @Binding var currentSessionStartTime: Date
     @Binding var currentSessionEndTime: Date
+    @EnvironmentObject var timer: TimerManager
     
     var barColor: Color {
         switch currentSessionType {
@@ -64,7 +65,7 @@ struct PomodoroView: View {
 
 struct PomodoroView_Previews: PreviewProvider {
     static var previews: some View {
-        PomodoroView(currentSessionType: .constant(.regularSession), currentSessionStartTime: .constant(Date().addingTimeInterval(-400)), currentSessionEndTime: .constant(Date().addingTimeInterval(1500)))
+        PomodoroView(currentSessionType: .constant(.regularSession), currentSessionStartTime: .constant(Date().addingTimeInterval(-400)), currentSessionEndTime: .constant(Date().addingTimeInterval(100)))
     }
 }
 

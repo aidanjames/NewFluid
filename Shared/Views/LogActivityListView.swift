@@ -16,6 +16,12 @@ struct LogActivityListView: View {
     @State private var searchText: String = ""
     @StateObject var pomodoroSessionVM = PomodoroSessionViewModel()
     
+    // To be replaced with a view model
+    @State private var currentSessionStartTime = Date()
+    @State private var currentSessionEndTime = Date().addingTimeInterval(100)
+    @State private var currentSessionType: SessionType = .regularSession
+    
+    
     var filteredLogRecords: [LogRecord] {
         if searchText.isEmpty {
             return logRecords
@@ -27,6 +33,11 @@ struct LogActivityListView: View {
     
     var body: some View {
         List {
+            VStack {
+                PomodoroView(currentSessionType: $currentSessionType, currentSessionStartTime: $currentSessionStartTime, currentSessionEndTime: $currentSessionEndTime)
+                Text("Stop pomodoro")
+                    .padding(.top)
+            }
             ForEach(filteredLogRecords, id: \.self) { logRecord in
                 ActivityView(logRecord: logRecord, coreDM: coreDM, refreshRequired: $refreshRequired, logRecords: $logRecords)
             }
