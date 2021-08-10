@@ -10,8 +10,8 @@ import SwiftUI
 struct PomodoroView: View {
     
     @Binding var currentSessionType: SessionType
-    @Binding var currentSessionStartTime: Date
-    @Binding var currentSessionEndTime: Date
+    @Binding var currentSessionStartTime: Date?
+    @Binding var currentSessionEndTime: Date?
     @EnvironmentObject var timer: TimerManager
     
     var barColor: Color {
@@ -25,7 +25,12 @@ struct PomodoroView: View {
         }
     }
     
-    var progress: Double { (abs(currentSessionStartTime.secondsSinceDate()) / currentSessionEndTime.timeIntervalSince(currentSessionStartTime)) * 100 }
+    var progress: Double {
+        guard let startTime = currentSessionStartTime else { return 0 }
+        guard let endTime = currentSessionEndTime else { return  0 }
+        return (abs(startTime.secondsSinceDate()) / endTime.timeIntervalSince(startTime)) * 100
+        
+    }
     
     var body: some View {
         
@@ -34,10 +39,20 @@ struct PomodoroView: View {
             VStack {
                 HStack {
                     Spacer().frame(width: (geo.size.width * progress / 100) - 30)
-                    Text("\(abs(Date().timeIntervalSince(currentSessionStartTime)).secondsToHoursMinsSecs())")
+                    if let startTime = currentSessionStartTime {
+                        Text("\(abs(Date().timeIntervalSince(startTime)).secondsToHoursMinsSecs())")
+
+                    } else {
+                        Text("")
+                    }
                     Spacer()
                     if progress < 93 {
-                        Text((currentSessionEndTime.timeIntervalSince(currentSessionStartTime)).secondsToHoursMinsSecs())
+                        if let startTime = currentSessionStartTime, let endTime = currentSessionEndTime {
+                            Text((endTime.timeIntervalSince(startTime)).secondsToHoursMinsSecs())
+                        } else {
+                            Text("")
+                        }
+                        
                     }
                 }
                 .font(.caption2)

@@ -10,15 +10,15 @@ import SwiftUI
 struct LogActivityListView: View {
     
     let coreDM: CoreDataManager
-    @Binding var refreshRequired: Bool    
+    @Binding var refreshRequired: Bool
     @Binding var logRecords: [LogRecord]
     @State private var activityName: String = ""
     @State private var searchText: String = ""
     @StateObject var pomodoroSessionVM = PomodoroSessionViewModel()
     
     // To be replaced with a view model
-    @State private var currentSessionStartTime = Date()
-    @State private var currentSessionEndTime = Date().addingTimeInterval(100)
+    @State private var currentSessionStartTime: Date? = Date()
+    @State private var currentSessionEndTime: Date? = Date().addingTimeInterval(100)
     @State private var currentSessionType: SessionType = .regularSession
     
     
@@ -35,8 +35,19 @@ struct LogActivityListView: View {
         List {
             VStack {
                 PomodoroView(currentSessionType: $currentSessionType, currentSessionStartTime: $currentSessionStartTime, currentSessionEndTime: $currentSessionEndTime)
-                Text("Stop pomodoro")
-                    .padding(.top)
+                
+                Button(action: {
+                    if currentSessionStartTime == nil {
+                        currentSessionStartTime = Date()
+                        currentSessionEndTime = Date().addingTimeInterval(1500)
+                    } else {
+                        currentSessionStartTime = nil
+                        currentSessionEndTime = nil
+                    }
+                } ) {
+                    Text(currentSessionStartTime != nil ? "Stop pomodoro" : "Start pomodoro")
+                }
+                .padding(.top)
             }
             ForEach(filteredLogRecords, id: \.self) { logRecord in
                 ActivityView(logRecord: logRecord, coreDM: coreDM, refreshRequired: $refreshRequired, logRecords: $logRecords)
