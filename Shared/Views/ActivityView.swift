@@ -39,6 +39,7 @@ struct ActivityView: View {
                             .onTapGesture {
                                 logRecord.endTime = Date()
                                 refreshRequired.toggle()
+                                coreDM.updateLogRecord()
                             }
                     }
                     Image(systemName: "tray.and.arrow.up.fill")
