@@ -40,7 +40,14 @@ struct PomodoroView: View {
                 HStack {
                     Spacer().frame(width: (geo.size.width * progress / 100) - 30)
                     if let startTime = currentSessionStartTime {
-                        Text("\(abs(Date().timeIntervalSince(startTime)).secondsToHoursMinsSecs())")
+                        if let endTime = currentSessionEndTime {
+                            if endTime > Date() {
+                                Text("\(abs(Date().timeIntervalSince(startTime)).secondsToHoursMinsSecs())")
+                            } else {
+                                Text((endTime.timeIntervalSince(startTime)).secondsToHoursMinsSecs())
+                            }
+                        }
+                        
 
                     } else {
                         Text("")
