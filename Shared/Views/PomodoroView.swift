@@ -38,7 +38,9 @@ struct PomodoroView: View {
             
             VStack {
                 HStack {
-                    Spacer().frame(width: (geo.size.width * progress / 100) - 30)
+                    if let endTime = currentSessionEndTime {
+                        Spacer().frame(width: Date() < endTime ? ((geo.size.width * progress / 100) - 30) : geo.size.width)
+                    }
                     if let startTime = currentSessionStartTime {
                         if let endTime = currentSessionEndTime {
                             if endTime > Date() {
@@ -71,11 +73,14 @@ struct PomodoroView: View {
                             .cornerRadius(16)
                     }
                     HStack {
-                        Rectangle()
-                            .frame(width: geo.size.width * progress / 100, height: 10)
-                            .foregroundColor(barColor)
-                            .cornerRadius(16)
-                        Spacer()
+                        if let endTime = currentSessionEndTime {
+                            Rectangle()
+                                .frame(width: Date() < endTime ? geo.size.width * progress / 100 : geo.size.width, height: 10 )
+                                .foregroundColor(barColor)
+                                .cornerRadius(16)
+                            Spacer()
+                        }
+                        
                     }
                 }
             }

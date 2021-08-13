@@ -18,7 +18,7 @@ struct LogActivityListView: View {
     
     // To be replaced with a view model
     @State private var currentSessionStartTime: Date? = Date()
-    @State private var currentSessionEndTime: Date? = Date().addingTimeInterval(100)
+    @State private var currentSessionEndTime: Date? = Date().addingTimeInterval(30)
     @State private var currentSessionType: SessionType = .regularSession
     
     
