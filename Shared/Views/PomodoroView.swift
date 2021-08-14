@@ -65,24 +65,7 @@ struct PomodoroView: View {
                     }
                 }
                 .font(.caption2)
-                ZStack {
-                    HStack {
-                        Rectangle()
-                            .frame(width: geo.size.width, height: 10)
-                            .foregroundColor(.secondary)
-                            .cornerRadius(16)
-                    }
-                    HStack {
-                        if let endTime = currentSessionEndTime {
-                            Rectangle()
-                                .frame(width: Date() < endTime ? geo.size.width * progress / 100 : geo.size.width, height: 10 )
-                                .foregroundColor(barColor)
-                                .cornerRadius(16)
-                            Spacer()
-                        }
-                        
-                    }
-                }
+                ProgressView("", value: progress, total: 100)
             }
         }
         .frame(height: 10)
