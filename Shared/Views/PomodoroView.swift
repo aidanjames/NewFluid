@@ -65,7 +65,8 @@ struct PomodoroView: View {
                     }
                 }
                 .font(.caption2)
-                ProgressView("", value: progress, total: 100)
+                ProgressView(value: progress, total: 100)
+                    .foregroundColor(.red)
             }
         }
         .frame(height: 10)
