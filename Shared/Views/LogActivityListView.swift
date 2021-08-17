@@ -14,12 +14,13 @@ struct LogActivityListView: View {
     @Binding var logRecords: [LogRecord]
     @State private var activityName: String = ""
     @State private var searchText: String = ""
+    @State private var searchingIsAllowed = false
     @StateObject var pomodoroSessionVM = PomodoroSessionViewModel()
     
     // To be replaced with a view model
     @State private var currentSessionStartTime: Date? = Date()
     @State private var currentSessionEndTime: Date? = Date().addingTimeInterval(30)
-    @State private var currentSessionType: SessionType = .regularSession
+    @State private var currentSessionType: SessionType = .shortBreak
     
     
     var filteredLogRecords: [LogRecord] {
@@ -54,7 +55,7 @@ struct LogActivityListView: View {
             }
             .onDelete { indexSet in
                 indexSet.forEach { index in
-                    let logRecord = logRecords[index]
+                    let logRecord = filteredLogRecords[index]
                     coreDM.deleteLogRecord(logRecord: logRecord)
                     refreshRequired.toggle()
                     populateLogRecords()
@@ -64,7 +65,16 @@ struct LogActivityListView: View {
             
         }
         .task { populateLogRecords() }
-        .searchable(text: $searchText)
+        .if(searchingIsAllowed, transform: { view in
+            view.searchable(text: $searchText, placement: .navigationBarDrawer)
+        })
+            .toolbar {
+            ToolbarItem {
+                Button("\(searchingIsAllowed ? "Hide search" : "Search")") {
+                    searchingIsAllowed.toggle()
+                }
+            }
+        }
         
     }
     

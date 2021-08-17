@@ -32,7 +32,6 @@ struct PomodoroView: View {
             return (abs(startTime.secondsSinceDate()) / endTime.timeIntervalSince(startTime))
         }
         return 1.0
-        
     }
     
     var body: some View {
@@ -55,7 +54,7 @@ struct PomodoroView: View {
                         Text("")
                     }
                     Spacer()
-                    if progress < 0.93 {
+                    if progress < 0.90 {
                         if let startTime = currentSessionStartTime, let endTime = currentSessionEndTime {
                             Text((endTime.timeIntervalSince(startTime)).secondsToHoursMinsSecs())
                         } else {
@@ -66,6 +65,9 @@ struct PomodoroView: View {
                 .font(.caption2)
                 ProgressView(value: progress)
                     .frame(maxWidth: geo.size.width)
+                    .tint(barColor)
+                    .scaleEffect(x: 1, y: 3, anchor: .top)
+                    .padding(.bottom)
             }
         }
         .frame(height: 10)
