@@ -42,14 +42,12 @@ struct PomodoroView: View {
                     Spacer()
                         .frame(maxWidth: geo.size.width * progress >= 30 ? geo.size.width * progress - 30 : 0)
                         .background(Color.red)
-                    if let startTime = currentSessionStartTime {
-                        if let endTime = currentSessionEndTime {
+                    if let startTime = currentSessionStartTime, let endTime = currentSessionEndTime {
                             if endTime > Date() {
                                 Text("\(abs(Date().timeIntervalSince(startTime)).secondsToHoursMinsSecs())")
                             } else {
                                 Text((endTime.timeIntervalSince(startTime)).secondsToHoursMinsSecs())
                             }
-                        }
                     } else {
                         Text("")
                     }

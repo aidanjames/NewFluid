@@ -48,6 +48,8 @@ struct LogActivityListView: View {
                 } ) {
                     Text(currentSessionStartTime != nil ? "Stop pomodoro" : "Start pomodoro")
                 }
+                .buttonStyle(.bordered)
+                .controlSize(.large)
                 .padding(.top)
             }
             ForEach(filteredLogRecords, id: \.self) { logRecord in
