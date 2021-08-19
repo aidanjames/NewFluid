@@ -48,7 +48,7 @@ struct LogActivityListView: View {
                 } ) {
                     Text(currentSessionStartTime != nil ? "Stop pomodoro" : "Start pomodoro")
                 }
-                .buttonStyle(.bordered)
+                .buttonStyle(.bordered )
                 .controlSize(.large)
                 .padding(.top)
             }

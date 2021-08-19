@@ -38,6 +38,7 @@ struct PomodoroView: View {
         
         GeometryReader { geo in
             VStack {
+                Text("\(currentSessionType == .regularSession ? "Reg sess" : "Break")")
                 HStack {
                     Spacer()
                         .frame(maxWidth: geo.size.width * progress >= 30 ? geo.size.width * progress - 30 : 0)
