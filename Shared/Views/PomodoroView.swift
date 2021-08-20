@@ -21,7 +21,7 @@ struct PomodoroView: View {
         case .shortBreak:
             return .green
         case .longBreak:
-            return .blue
+            return .blue    
         }
     }
     
