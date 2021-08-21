@@ -52,7 +52,7 @@ struct LogActivityListView: View {
                 .controlSize(.large)
                 .padding(.top)
             }
-            ForEach(filteredLogRecords, id: \.self) { logRecord in
+            ForEach(filteredLogRecords.sorted { $0.startTime! > $1.startTime! }, id: \.self) { logRecord in
                 ActivityView(logRecord: logRecord, coreDM: coreDM, refreshRequired: $refreshRequired, logRecords: $logRecords)
             }
             .onDelete { indexSet in
