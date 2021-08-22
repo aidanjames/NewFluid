@@ -25,10 +25,10 @@ struct LogActivityListView: View {
     
     var filteredLogRecords: [LogRecord] {
         if searchText.isEmpty {
-            return logRecords
+            return logRecords.sorted { $0.startTime! > $1.startTime! }
         } else {
             return logRecords.filter {
-                $0.activityName!.lowercased().contains(searchText.lowercased()) }
+                $0.activityName!.lowercased().contains(searchText.lowercased()) }.sorted { $0.startTime! > $1.startTime! }
         }
     }
     
@@ -52,7 +52,7 @@ struct LogActivityListView: View {
                 .controlSize(.large)
                 .padding(.top)
             }
-            ForEach(filteredLogRecords.sorted { $0.startTime! > $1.startTime! }, id: \.self) { logRecord in
+            ForEach(filteredLogRecords, id: \.self) { logRecord in
                 ActivityView(logRecord: logRecord, coreDM: coreDM, refreshRequired: $refreshRequired, logRecords: $logRecords)
             }
             .onDelete { indexSet in
