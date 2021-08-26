@@ -33,50 +33,54 @@ struct LogActivityListView: View {
     }
     
     var body: some View {
-        List {
-            VStack {
-                PomodoroView(currentSessionType: $currentSessionType, currentSessionStartTime: $currentSessionStartTime, currentSessionEndTime: $currentSessionEndTime)
+
+            List {
                 
-                Button(action: {
-                    if currentSessionStartTime == nil {
-                        currentSessionStartTime = Date()
-                        currentSessionEndTime = Date().addingTimeInterval(1500)
-                    } else {
-                        currentSessionStartTime = nil
-                        currentSessionEndTime = nil
+                VStack {
+                    PomodoroView(currentSessionType: $currentSessionType, currentSessionStartTime: $currentSessionStartTime, currentSessionEndTime: $currentSessionEndTime)
+                    
+                    Button(action: {
+                        if currentSessionStartTime == nil {
+                            currentSessionStartTime = Date()
+                            currentSessionEndTime = Date().addingTimeInterval(1500)
+                        } else {
+                            currentSessionStartTime = nil
+                            currentSessionEndTime = nil
+                        }
+                    } ) {
+                        Text(currentSessionStartTime != nil ? "Stop pomodoro" : "Start pomodoro")
                     }
-                } ) {
-                    Text(currentSessionStartTime != nil ? "Stop pomodoro" : "Start pomodoro")
+                    .buttonStyle(.bordered )
+                    .controlSize(.large)
+                    .padding(.top)
                 }
-                .buttonStyle(.bordered )
-                .controlSize(.large)
-                .padding(.top)
+                
+                ForEach(filteredLogRecords, id: \.self) { logRecord in
+                    ActivityView(logRecord: logRecord, coreDM: coreDM, refreshRequired: $refreshRequired, logRecords: $logRecords)
+                }
+                .onDelete { indexSet in
+                    indexSet.forEach { index in
+                        let logRecord = filteredLogRecords[index]
+                        coreDM.deleteLogRecord(logRecord: logRecord)
+                        refreshRequired.toggle()
+                        populateLogRecords()
+                    }
+                }
+                .accentColor(refreshRequired ? .blue : .blue) // Workaround so list updates following .updateLogRecord()
+                
             }
-            ForEach(filteredLogRecords, id: \.self) { logRecord in
-                ActivityView(logRecord: logRecord, coreDM: coreDM, refreshRequired: $refreshRequired, logRecords: $logRecords)
-            }
-            .onDelete { indexSet in
-                indexSet.forEach { index in
-                    let logRecord = filteredLogRecords[index]
-                    coreDM.deleteLogRecord(logRecord: logRecord)
-                    refreshRequired.toggle()
-                    populateLogRecords()
+            .task { populateLogRecords() }
+            .if(searchingIsAllowed, transform: { view in
+                view.searchable(text: $searchText, placement: .navigationBarDrawer)
+            })
+                .toolbar {
+                ToolbarItem {
+                    Button("\(searchingIsAllowed ? "Hide search" : "Search")") {
+                        searchingIsAllowed.toggle()
+                    }
                 }
             }
-            .accentColor(refreshRequired ? .blue : .blue) // Workaround so list updates following .updateLogRecord()
-            
-        }
-        .task { populateLogRecords() }
-        .if(searchingIsAllowed, transform: { view in
-            view.searchable(text: $searchText, placement: .navigationBarDrawer)
-        })
-            .toolbar {
-            ToolbarItem {
-                Button("\(searchingIsAllowed ? "Hide search" : "Search")") {
-                    searchingIsAllowed.toggle()
-                }
-            }
-        }
+        
         
     }
     
