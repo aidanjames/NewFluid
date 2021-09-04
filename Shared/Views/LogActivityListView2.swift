@@ -5,11 +5,12 @@
 //  Created by Aidan Pendlebury on 11/07/2021.
 //
 
-// Using grouped log records for each list record.
+// Using a single log record for each list record.
+
 
 import SwiftUI
 
-struct LogActivityListView: View {
+struct LogActivityListView2: View {
     
     let coreDM: CoreDataManager
     @Binding var refreshRequired: Bool
@@ -31,17 +32,6 @@ struct LogActivityListView: View {
             return logRecords.filter {
                 $0.activityName!.lowercased().contains(searchText.lowercased()) }.sorted { $0.startTime! > $1.startTime! }
         }
-    }
-    
-    var filteredLogRecordsGrouped: [String: [LogRecord]] {
-        // group log records
-        let grouped = Dictionary(grouping: logRecords, by: { $0.activityName! })
-        
-        // sort by most recent start date
-        
-        // filter if search text not empty
-        
-        return grouped
     }
     
     var body: some View {
@@ -91,14 +81,8 @@ struct LogActivityListView: View {
                 // Toolbar button
                 .toolbar {
                 ToolbarItem {
-//                    Button("\(searchingIsAllowed ? "Hide search" : "Search")") {
-//                        searchingIsAllowed.toggle()
-//                    }
-                    Button("Print groups") {
-                        print(filteredLogRecordsGrouped)
-//                        for group in filteredLogRecordsGrouped {
-//                            print(group.key)
-//                        }
+                    Button("\(searchingIsAllowed ? "Hide search" : "Search")") {
+                        searchingIsAllowed.toggle()
                     }
                 }
             }
@@ -111,10 +95,10 @@ struct LogActivityListView: View {
     }
 }
 
-struct LogActivityListView_Previews: PreviewProvider {
+struct LogActivityListView2_Previews: PreviewProvider {
     
     static var previews: some View {
         let coreDmPreview = CoreDataManager()
-        LogActivityListView(coreDM: coreDmPreview, refreshRequired: .constant(false), logRecords: .constant([]))
+        LogActivityListView2(coreDM: coreDmPreview, refreshRequired: .constant(false), logRecords: .constant([]))
     }
 }

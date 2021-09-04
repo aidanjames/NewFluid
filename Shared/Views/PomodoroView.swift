@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+enum SessionType {
+    case regularSession
+    case shortBreak
+    case longBreak
+}
+
 struct PomodoroView: View {
     
     @Binding var currentSessionType: SessionType
@@ -21,7 +27,7 @@ struct PomodoroView: View {
         case .shortBreak:
             return .green
         case .longBreak:
-            return .blue    
+            return .blue
         }
     }
     
@@ -44,11 +50,11 @@ struct PomodoroView: View {
                         .frame(maxWidth: geo.size.width * progress >= 30 ? geo.size.width * progress - 30 : 0)
                         .background(Color.red)
                     if let startTime = currentSessionStartTime, let endTime = currentSessionEndTime {
-                            if endTime > Date() {
-                                Text("\(abs(Date().timeIntervalSince(startTime)).secondsToHoursMinsSecs())")
-                            } else {
-                                Text((endTime.timeIntervalSince(startTime)).secondsToHoursMinsSecs())
-                            }
+                        if endTime > Date() {
+                            Text("\(abs(Date().timeIntervalSince(startTime)).secondsToHoursMinsSecs())")
+                        } else {
+                            Text((endTime.timeIntervalSince(startTime)).secondsToHoursMinsSecs())
+                        }
                     } else {
                         Text("")
                     }
@@ -71,7 +77,7 @@ struct PomodoroView: View {
         }
         .frame(height: 50)
     }
-
+    
 }
 
 struct PomodoroView_Previews: PreviewProvider {
