@@ -1,17 +1,17 @@
 //
-//  ActivityView.swift
-//  NewFluid
+//  GroupedActivityCellView.swift
+//  GroupedActivityCellView
 //
-//  Created by Aidan Pendlebury on 15/07/2021.
+//  Created by Aidan Pendlebury on 04/09/2021.
 //
 
 import SwiftUI
 
-struct ActivityView: View {
+struct GroupedActivityCellView: View {
     
     var logRecord: LogRecord
     var coreDM: CoreDataManager
-    
+        
     @Binding var refreshRequired: Bool
     @Binding var logRecords: [LogRecord]
     @EnvironmentObject var timer: TimerManager
@@ -30,9 +30,7 @@ struct ActivityView: View {
             if logRecord.endTime == nil {
                 VStack {
                     HStack {
-                        Text("\(logRecord.startTime?.secondsSinceDate().secondsToHoursMinsSecs() ?? "")")
-                            .font(Font.system(.body).monospacedDigit())
-                        
+                        ActiveTimerCounterView(startTime: logRecord.startTime ?? Date())
                         Circle()
                             .frame(width: 20, height: 20)
                             .foregroundColor(.red)
@@ -72,16 +70,15 @@ struct ActivityView: View {
     
 }
 
-struct ActivityView_Previews: PreviewProvider {
-    
-    
-    static var previews: some View {
-        
-        let coreDM = CoreDataManager()
-        let logRecord = LogRecord(context: coreDM.persistentContainer.viewContext)
-        logRecord.activityName = "Discovery"
-        logRecord.startTime = Date()
-        
-        return ActivityView(logRecord: logRecord, coreDM: coreDM, refreshRequired: .constant(false), logRecords: .constant([]))
-    }
-}
+    //struct GroupedActivityCellView_Previews: PreviewProvider {
+    //    static var previews: some View {
+    //
+    //        let coreDM = CoreDataManager()
+    //        let logRecord = LogRecord(context: coreDM.persistentContainer.viewContext)
+    //        logRecord.activityName = "Discovery"
+    //        logRecord.startTime = Date()
+    //
+    //        return GroupedActivityCellView(logRecord: logRecord, coreDM: coreDM, refreshRequired: .constant(false), logRecords: .constant([]))
+    //    }
+    //}
+

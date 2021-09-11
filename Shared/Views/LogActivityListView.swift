@@ -51,6 +51,7 @@ struct LogActivityListView: View {
                 VStack {
                     PomodoroView(currentSessionType: $currentSessionType, currentSessionStartTime: $currentSessionStartTime, currentSessionEndTime: $currentSessionEndTime)
                     
+                    // Can I move this button to the pomodoro view? Seems wrong being here
                     Button(action: {
                         if currentSessionStartTime == nil {
                             currentSessionStartTime = Date()
@@ -91,14 +92,8 @@ struct LogActivityListView: View {
                 // Toolbar button
                 .toolbar {
                 ToolbarItem {
-//                    Button("\(searchingIsAllowed ? "Hide search" : "Search")") {
-//                        searchingIsAllowed.toggle()
-//                    }
                     Button("Print groups") {
                         print(filteredLogRecordsGrouped)
-//                        for group in filteredLogRecordsGrouped {
-//                            print(group.key)
-//                        }
                     }
                 }
             }
